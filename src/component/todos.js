@@ -12,15 +12,15 @@ import { Card, Grid, ListItemButton, ListItemText, Checkbox} from "@mui/material
 const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
-      var color = 'white';
-      var dueDate = new Date(todo.due);
-      var currDate = new Date();
-      if (dueDate > currDate) {
-        color = '#f2bbbb';
+      var color = '#cfe9fc';
+      const dueDate = new Date(todo.due);
+      const currDate = new Date();
+      if (dueDate < currDate) {
+        color = '#fccfcf';
       }
       return (
         <Grid key={todo.id}>
-          <Card style={{marginTop:10}} background={color} data-testid={todo.content}>
+          <Card style={{marginTop:10, backgroundColor: color}} data-testid={todo.content}>
             <ListItemButton component="a" href="#simple-list">
               <Checkbox style={{paddingLeft:0}} color="primary" onClick={() => deleteTodo(todo.id)}/>
               <ListItemText primary={todo.content} secondary={todo.due}/>
